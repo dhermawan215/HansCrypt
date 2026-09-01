@@ -1,5 +1,7 @@
 # HansCrypt
 
+[Repository](https://github.com/dhermawan215/HansCrypt) · [Issues](https://github.com/dhermawan215/HansCrypt/issues)
+
 Framework-agnostic, reversible ID/URL obfuscation for PHP, backed by AES-256-GCM.
 
 Turn `/users/482` into `/users/9x3F...` and back — without a lookup table, and without leaking your database schema or letting anyone enumerate IDs.
@@ -15,6 +17,18 @@ composer require hanssuite/hanscrypt
 ```
 
 Requires PHP 8.1+ and the `openssl` extension. No framework is required — Laravel/Symfony packages are only needed if you use those integrations (see below).
+
+Not yet on Packagist? Install straight from GitHub by adding a VCS repository to your `composer.json`:
+
+```json
+{
+  "repositories": [
+    { "type": "vcs", "url": "https://github.com/dhermawan215/HansCrypt" }
+  ]
+}
+```
+
+then run `composer require hanssuite/hanscrypt:dev-main`.
 
 ## Quick start (native PHP / any framework)
 

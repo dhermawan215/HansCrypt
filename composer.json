@@ -3,6 +3,7 @@
   "description": "Framework-agnostic AES-256-GCM ID/URL obfuscation, with first-class Laravel and Symfony integrations and a generic PSR-11 factory.",
   "type": "library",
   "license": "MIT",
+  "homepage": "https://github.com/dhermawan215/HansCrypt",
   "authors": [
     {
       "name": "Nusantara Innovation Technology",
@@ -10,7 +11,9 @@
     }
   ],
   "support": {
-    "email": "support@nusainnotech.com"
+    "email": "support@nusainnotech.com",
+    "issues": "https://github.com/dhermawan215/HansCrypt/issues",
+    "source": "https://github.com/dhermawan215/HansCrypt"
   },
   "keywords": [
     "encryption",
