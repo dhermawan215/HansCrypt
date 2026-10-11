@@ -40,6 +40,33 @@ class SecureEncryptionTest extends TestCase
         $this->assertNull((new SecureEncryption('key-two'))->decode($token));
     }
 
+    public function test_decode_many_decodes_an_array_of_tokens(): void
+    {
+        $secure = new SecureEncryption('test-key');
+
+        $tokens = [$secure->encode(1), $secure->encode('user-abc'), $secure->encode(3)];
+
+        $this->assertSame([1, 'user-abc', 3], $secure->decodeMany($tokens));
+    }
+
+    public function test_decode_many_preserves_keys_and_nulls_invalid_tokens(): void
+    {
+        $secure = new SecureEncryption('test-key');
+
+        $result = $secure->decodeMany([
+            'a' => $secure->encode(10),
+            'b' => 'garbage',
+            'c' => 123,
+        ]);
+
+        $this->assertSame(['a' => 10, 'b' => null, 'c' => null], $result);
+    }
+
+    public function test_decode_many_with_empty_array_returns_empty_array(): void
+    {
+        $this->assertSame([], (new SecureEncryption('test-key'))->decodeMany([]));
+    }
+
     public function test_empty_key_throws(): void
     {
         $this->expectException(InvalidKeyException::class);

@@ -48,4 +48,12 @@ class SecureEncryption implements SecureEncryptionInterface
 
         return $data['id'] ?? null;
     }
+
+    public function decodeMany(array $tokens): array
+    {
+        return array_map(
+            fn ($token) => is_string($token) ? $this->decode($token) : null,
+            $tokens
+        );
+    }
 }

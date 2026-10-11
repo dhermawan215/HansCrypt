@@ -41,10 +41,13 @@ $token = $secure->encode(482);      // "gk1Z3n9Q..."
 $id = $secure->decode($token);      // 482
 
 $secure->decode('garbage');         // null — invalid/tampered tokens never throw
+
+$ids = $secure->decodeMany([$token, 'garbage']);   // [482, null]
 ```
 
 - `encode(string|int $id): string` — returns a URL-safe token.
 - `decode(string $token): string|int|null` — returns the original ID, or `null` if the token is invalid, tampered with, or was encrypted with a different key.
+- `decodeMany(array $tokens): array` — decodes an array of tokens in one call. Array keys are preserved, and any invalid token (or non-string entry) becomes `null` at its position.
 - The constructor throws `HansCrypt\Exception\InvalidKeyException` if given an empty key.
 
 Keep the key secret and stable: rotating it invalidates every previously issued token.
