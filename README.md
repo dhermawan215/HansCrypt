@@ -18,16 +18,6 @@ composer require hanssuite/hanscrypt
 
 Requires PHP 8.1+ and the `openssl` extension. No framework is required — Laravel/Symfony packages are only needed if you use those integrations (see below).
 
-Not yet on Packagist? Install straight from GitHub by adding a VCS repository to your `composer.json`:
-
-```json
-{
-  "repositories": [
-    { "type": "vcs", "url": "https://github.com/dhermawan215/HansCrypt" }
-  ]
-}
-```
-
 then run `composer require hanssuite/hanscrypt:dev-main`.
 
 ## Quick start (native PHP / any framework)
@@ -107,7 +97,7 @@ Configure it in `config/packages/hanscrypt.yaml`:
 
 ```yaml
 hanscrypt:
-    key: '%env(HANSCRYPT_KEY)%'
+  key: "%env(HANSCRYPT_KEY)%"
 ```
 
 Then autowire it anywhere:
